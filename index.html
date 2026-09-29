@@ -1,15 +1,71 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f4f0"><meta name="description" content="DATXY · 数据集、模型、GPU、CPU 与实用网站的资源索引。">
-  <title>DATXY — Discover the useful web</title><link rel="icon" href="favicon.png"><link rel="stylesheet" href="style.css"><script src="app.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f4f0">
+  <meta name="description" content="DATXY · 数据集、模型、算力与实用工具。搜索资源，阅读技术笔记，发现有用的互联网。">
+  <title>DATXY — 数据、模型与有用的互联网</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
-<body><div class="shell">
-  <header class="topbar"><a class="brand" href="/" aria-label="DATXY 首页"><span class="brand-mark">D<span>×</span></span><span>DATXY<span class="period">.</span></span></a><div class="top-note">THE INDEX FOR CURIOUS MINDS <span></span> EST. 2026</div><a class="top-link" href="https://github.com/feeday/url" target="_blank" rel="noopener noreferrer">SOURCE ON GITHUB ↗</a></header>
-  <main>
-    <section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><div class="eyebrow"><span class="status-dot"></span> AN OPEN DIRECTORY OF GOOD LINKS <span class="faint">/ 001</span></div><h1 id="hero-title">Find your<br><em>next</em> thing<span class="period">.</span></h1><p>从数据集到模型，从算力到灵感。<br>把真正有用的互联网，放在一个地方。</p><div class="hero-actions"><a class="primary" href="#explore">开始探索 <span>↗</span></a><small>SCROLL TO EXPLORE ↓</small></div></div><div class="hero-art" aria-hidden="true"><div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div><span class="art-label label-one">DATASET_01</span><span class="art-label label-two">MODEL_02</span><span class="art-label label-three">COMPUTE_03</span><div class="art-center"><span>D</span><small>DATXY / INDEX</small></div><span class="cross c1">+</span><span class="cross c2">+</span><span class="coordinate">40° 42′ 46″ N<br>74° 00′ 21″ W</span></div></section>
-    <section class="explore" id="explore" aria-labelledby="explore-title"><div class="section-top"><div><span class="kicker">01 / THE DIRECTORY</span><h2 id="explore-title">Explore the index<span class="period">.</span></h2></div><p>精挑细选，随时发现。<br>搜索你需要的资源，或按主题浏览。</p></div><div class="directory"><aside class="sidebar" aria-label="资源分类"><span class="side-caption">BROWSE BY CATEGORY</span><nav id="category-nav" class="category-nav"></nav><div class="side-bottom"><span>✳</span><p>Good resources deserve<br>to be found.</p><small>CURATED BY DATXY</small></div></aside><div class="results"><div class="toolbar"><label class="search-wrap"><span aria-hidden="true">⌕</span><span class="sr-only">搜索资源</span><input id="search" type="search" placeholder="搜索名称、描述或网站..." autocomplete="off"><kbd>/</kbd></label><div class="toolbar-actions"><span id="result-count" aria-live="polite"></span><button id="sort-button" type="button">精选优先 ↓</button></div></div><div class="result-heading"><div><span id="current-index">00</span> / <span id="current-category">全部资源</span></div><span>EXPLORE THE WEB ↗</span></div><div id="cards" class="cards" aria-live="polite"></div><div id="empty" class="empty" hidden><span>⌕</span><h3>没有找到相关资源</h3><p>试试更短的关键词，或切换到全部资源。</p><button id="reset-button" type="button">清除筛选 ↗</button></div></div></div></section>
-    <section class="closing"><div><span>02 / KEEP EXPLORING</span><h2>The internet is<br><em>still interesting.</em></h2></div><a href="https://github.com/feeday/url" target="_blank" rel="noopener noreferrer">一起完善这个索引 <span>↗</span></a></section>
-  </main><footer><a href="/" class="footer-brand">DATXY<span>.</span></a><span>DATA · MODEL · COMPUTE · WEB</span><span>© <span id="year"></span> DATXY</span></footer>
-</div></body></html>
+<body id="top">
+  <a href="#explore" class="skip-link">跳到资源目录</a>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="DATXY 首页"><span class="brand-mark" aria-hidden="true">D<span>×</span></span><span>DATXY<span class="period">.</span></span></a>
+      <div class="top-note">THE INDEX FOR CURIOUS MINDS <span></span> EST. 2026</div>
+      <nav class="top-nav" aria-label="主导航"><a href="?category=Article#explore">文章笔记</a><a href="https://github.com/feeday/url" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="status-dot"></span> DATA. MODELS. POSSIBILITIES.</div>
+          <h1 id="hero-title">Find your<br><em>next</em> thing<span class="period">.</span></h1>
+          <p>从数据集到模型，从算力到灵感。<br>把真正有用的互联网，放在一个地方。</p>
+          <div class="hero-actions"><a class="primary" href="#explore">开始探索 <span aria-hidden="true">↗</span></a><small><strong id="resource-total">—</strong> 个资源 <span>·</span> <strong id="article-total">—</strong> 篇笔记</small></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div>
+          <span class="art-label label-one">DATASET_01</span><span class="art-label label-two">MODEL_02</span><span class="art-label label-three">COMPUTE_03</span>
+          <div class="art-center"><span>D</span><small>DATXY / INDEX</small></div><span class="cross c1">+</span><span class="cross c2">+</span><span class="coordinate">GOOD LINKS.<br>OPEN POSSIBILITIES.</span>
+        </div>
+      </section>
+      <section class="tool-strip" aria-label="在线工具">
+        <span class="tool-strip-label">THE WORKBENCH <small>随手可用的工具</small></span>
+        <a href="aigx-x.html"><span>01</span><div>AI / Markdown<small>模型测试与写作</small></div><b aria-hidden="true">↗</b></a>
+        <a href="gpu/"><span>02</span><div>GPU Test<small>显卡压力测试</small></div><b aria-hidden="true">↗</b></a>
+        <a href="xlsx.html"><span>03</span><div>Data Table<small>表格浏览与筛选</small></div><b aria-hidden="true">↗</b></a>
+        <a href="dB.html"><span>04</span><div>Audio Lab<small>音频分析台</small></div><b aria-hidden="true">↗</b></a>
+      </section>
+      <section class="explore" id="explore" aria-labelledby="explore-title">
+        <div class="section-top"><div><span class="kicker">01 / THE DIRECTORY</span><h2 id="explore-title">Explore the index<span class="period">.</span></h2></div><p>资源与笔记，一个搜索框。<br>按主题浏览，或直接搜索全文。</p></div>
+        <div class="directory">
+          <aside class="sidebar" aria-label="资源分类"><span class="side-caption">BROWSE BY CATEGORY</span><nav id="category-nav" class="category-nav"></nav><div class="side-bottom"><span aria-hidden="true">✳</span><p>Good resources deserve<br>to be found.</p><small>CURATED BY DATXY</small></div></aside>
+          <div class="results">
+            <form id="search-form" class="search-form" role="search">
+              <label class="sr-only" for="search-engine">搜索引擎</label>
+              <select id="search-engine" class="engine-select"><option value="local">站内搜索</option><option value="google">Google</option><option value="baidu">百度</option><option value="github">GitHub</option><option value="huggingface">Hugging Face</option><option value="youtube">YouTube</option><option value="bilibili">哔哩哔哩</option><option value="yandex">Yandex 图片</option><option value="douyin">抖音</option></select>
+              <label class="sr-only" for="search">搜索资源与文章全文</label><input id="search" type="search" placeholder="搜索资源、文章或关键词…" autocomplete="off">
+              <button type="button" id="clear-search" class="clear-search" aria-label="清空搜索" hidden>×</button>
+              <button type="submit" class="search-submit" aria-label="执行搜索">搜索 <span aria-hidden="true">↗</span></button>
+            </form>
+            <div class="filter-toolbar"><label>内容类型 <select id="kind-filter"><option value="all">全部类型</option><option value="text">文本</option><option value="image">图像</option><option value="video">视频</option><option value="audio">音频</option><option value="multi">多模态</option><option value="tool">工具</option><option value="ad">平台</option><option value="log">文章</option></select></label><div class="toolbar-actions"><span id="result-count" role="status"></span><button id="sort-button" type="button">精选优先 ↓</button></div></div>
+            <p id="load-status" class="load-status" role="alert" hidden></p>
+            <div class="result-heading"><div><span id="current-index">00</span> / <span id="current-category">全部资源</span></div><span>EXPLORE THE WEB ↗</span></div>
+            <p id="article-hint" class="article-hint">搜索也能找到文章正文，或从「文章笔记」查看全部。</p>
+            <div id="cards" class="cards" aria-label="搜索结果"></div>
+            <button id="load-more" type="button" class="load-more" hidden>加载更多 ↓</button>
+            <div id="empty" class="empty" hidden><span aria-hidden="true">⌕</span><h3>没有找到相关资源</h3><p>试试更短的关键词，或切换到全部资源。</p><button id="reset-button" type="button">清除筛选 ↗</button></div>
+            <noscript><p>请启用 JavaScript 以搜索和筛选资源。<a href="list.json">查看资源列表</a> · <a href="data/posts.json">查看文章索引</a></p></noscript>
+          </div>
+        </div>
+      </section>
+      <section class="closing"><div><span>02 / KEEP EXPLORING</span><h2>The internet is<br><em>still interesting.</em></h2></div><a href="https://github.com/feeday/url" target="_blank" rel="noopener noreferrer">一起完善这个索引 <span aria-hidden="true">↗</span></a></section>
+    </main>
+    <footer><a href="./" class="footer-brand">DATXY<span>.</span></a><span>DATA · MODEL · COMPUTE · WEB</span><span>© <span id="year"></span> DATXY</span></footer>
+  </div>
+  <a class="back-top" href="#top" aria-label="返回顶部">↑</a>
+</body>
+</html>

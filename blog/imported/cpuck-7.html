@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5f4f0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-+80auSx1xP5va/maVn5Hs20XTCenuI4ZdU5Z6swesL4='; img-src https: data:; media-src https:; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>3G-USB · DATXY</title>
+<style>:root{color-scheme:light;--paper:#f5f4f0;--ink:#233229;--muted:#778372;--green:#3e6b48;--line:#dce2d5}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.9 system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif}a{color:var(--green);text-underline-offset:4px}a:focus-visible,summary:focus-visible{outline:2px solid var(--green);outline-offset:4px}img,video{max-width:100%;height:auto}button,summary{cursor:pointer}.article-header{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1200px;margin:auto;padding:25px 28px;border-bottom:1px solid var(--line)}.article-brand{font-size:25px;line-height:1;font-weight:800;letter-spacing:-1.6px;color:var(--ink);text-decoration:none}.article-brand span{color:#77a95e}.article-header nav{display:flex;gap:24px;font-size:12px}.article-header nav a{text-decoration:none;padding:8px 0}.article-layout{display:grid;grid-template-columns:minmax(0,820px) 230px;align-items:start;gap:42px;max-width:1200px;margin:48px auto 90px;padding:0 28px}.article-layout main{min-width:0;padding:40px 48px;background:#fffefa;border:1px solid var(--line);border-radius:16px;overflow-wrap:anywhere}.article-eyebrow{font:11px/1.6 ui-monospace,monospace;color:#6d8963;letter-spacing:.08em}.article-title{font-size:clamp(27px,3vw,40px);line-height:1.4;letter-spacing:-.04em;margin:18px 0}.article-meta{display:flex;gap:8px 20px;flex-wrap:wrap;font-size:12px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:25px;margin-bottom:30px}.article-meta a{color:#607456}.article-meta time{white-space:nowrap}article{min-width:0}article>:first-child{margin-top:0}article h1{font-size:28px}article h2{font-size:24px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-top:42px}article h3{font-size:20px;margin-top:30px}article :is(h1,h2,h3,h4,h5,h6){line-height:1.5;scroll-margin-top:24px}article p{margin:18px 0}article ul,article ol{padding-left:24px}article li+li{margin-top:7px}article blockquote{border-left:3px solid #9cba7d;background:#f2f5eb;margin:24px 0;padding:12px 20px;color:#5a6c52;border-radius:0 8px 8px 0}article blockquote p{margin:8px 0}article :not(pre)>code{background:#edf0e7;color:#517142;border-radius:4px;padding:2px 5px;font-size:.9em;overflow-wrap:anywhere}article pre{overflow:auto;max-width:100%}article table{display:block;max-width:100%;overflow:auto;border-collapse:collapse;font-size:14px;line-height:1.7;margin:24px 0}article td,article th{border:1px solid #dbe2d4;padding:10px 14px;min-width:100px}article th{background:#eaf0e2;text-align:left}article tbody tr:nth-child(even){background:#f7f8f3}article hr{border:0;border-top:1px solid var(--line);margin:30px 0}.toc-slot{position:sticky;top:24px;min-width:0}.article-toc{border-top:1px solid #758d6b;font-size:12px}.article-toc summary{padding:17px 6px;color:var(--green);font-weight:600}.article-toc nav{max-height:calc(100dvh - 140px);overflow:auto;padding-bottom:12px;scrollbar-width:thin}.article-toc nav a{display:block;color:#7c8973;text-decoration:none;padding:7px 12px;border-left:2px solid transparent;line-height:1.6;overflow-wrap:anywhere}.article-toc nav a:hover,.article-toc nav a[aria-current]{background:#e9efdf;border-color:#91ac78;color:#416335}.article-footer{border-top:1px solid var(--line);padding-top:25px;margin-top:40px;display:flex;justify-content:space-between;gap:16px;font-size:12px;color:var(--muted)}.article-footer a{text-decoration:none}.back-top{position:fixed;bottom:20px;right:20px;display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:#fffefa;color:var(--green);text-decoration:none;box-shadow:0 6px 20px #152c1910}@media(max-width:1000px){.article-layout{display:flex;flex-direction:column;gap:18px;max-width:860px;margin-top:26px}.toc-slot{position:static;order:-1;width:100%}.article-toc{border:1px solid var(--line);border-radius:10px;background:#ecefe5}.article-toc summary{padding:12px 18px}.article-toc nav{max-height:40dvh;padding:0 10px 12px}.article-layout main{width:100%;padding:32px}}@media(max-width:600px){.article-header{padding:20px 18px}.article-header nav{gap:16px;font-size:11px}.article-layout{padding:0 12px;margin:18px auto 72px;gap:12px}.article-layout main{padding:25px 19px;border-radius:12px}body{font-size:15px;line-height:1.9}.article-title{font-size:27px}.article-meta{font-size:11px;gap:6px 14px;padding-bottom:20px}article h1{font-size:25px}article h2{font-size:22px}article h3{font-size:19px}article blockquote{padding:10px 14px}article td,article th{padding:9px 12px}.article-footer{flex-wrap:wrap}.back-top{right:12px;bottom:max(12px,env(safe-area-inset-bottom))}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{.toc-slot,.back-top,.article-header{display:none}.article-layout{display:block;margin:0;padding:0;max-width:none}.article-layout main{border:0;padding:0}.article-footer{display:none}body{background:white;color:black}}
+
+.code-frame{--code-bg:#17251e;--code-top:#21352a;--code-line:#344d3c;--code-text:#e0eada;position:relative;max-width:100%;min-width:0;margin:22px 0;border:1px solid var(--code-line);border-radius:12px;background:var(--code-bg);overflow:hidden;color:var(--code-text);text-align:left}.code-frame .code-header{display:flex;align-items:center;flex-wrap:wrap;gap:9px;min-height:48px;padding:12px 78px 12px 16px;background:var(--code-top);font:12px/1.7 system-ui,sans-serif;color:#d6e5ce}.code-frame summary{cursor:pointer;list-style:none}.code-frame summary::-webkit-details-marker{display:none}.code-frame summary:before{content:'▸';color:#a8c590}.code-frame details[open]>summary:before{content:'▾'}.code-label{font-weight:600;overflow-wrap:anywhere}.code-count{color:#9eb298}.code-toggle-label{color:#c7dfa7;margin-left:auto;white-space:nowrap}.code-frame .copy-code{position:absolute;right:10px;top:7px;min-height:34px;min-width:52px;padding:5px 9px;border:1px solid #527048;border-radius:6px;background:#2c4433;color:#deebd6;font:12px/1.7 system-ui,sans-serif;cursor:pointer}.code-frame .copy-code:hover{background:#3c5c3d}.code-frame pre,.code-frame .code-fold pre{max-width:100%;margin:0;padding:18px;overflow:auto;white-space:pre;overflow-wrap:normal;word-break:normal;background:var(--code-bg);color:var(--code-text);font:13px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:4;border:0;border-radius:0;-webkit-overflow-scrolling:touch}.code-frame pre code{display:inline;padding:0;margin:0;background:transparent;color:inherit;font:inherit;white-space:inherit;word-break:normal;overflow-wrap:normal}.code-frame summary:focus-visible,.code-frame button:focus-visible,.code-frame pre:focus-visible{outline:2px solid #b8d29f;outline-offset:-3px}.code-fold{margin:0;padding:0}@media(max-width:600px){.code-frame{margin:18px 0;border-radius:9px}.code-frame .code-header{font-size:11px;padding-left:12px;gap:6px}.code-frame pre,.code-frame .code-fold pre{font-size:12px;padding:14px;line-height:1.8}.code-toggle-label{margin-left:0}}@media print{.code-fold:not([open])>*{display:block!important}.code-fold::details-content{content-visibility:visible!important}.copy-code{display:none!important}.code-frame pre{white-space:pre-wrap;overflow-wrap:anywhere}}
+</style></head><body id="article-top">
+<header class="article-header"><a class="article-brand" href="/">DATXY<span>.</span></a><nav aria-label="主导航"><a href="/">资源目录</a><a href="/?category=Article#explore">文章笔记</a></nav></header>
+<div class="article-layout"><main><div class="article-eyebrow">DATXY NOTES / 技术与探索</div>
+<h1 class="article-title">3G-USB</h1><div class="article-meta"><span>更新 <time datetime="2026-09-26">2026-09-26</time></span><a href="https://github.com/feeday/cpuck.com/issues/7" target="_blank" rel="noopener noreferrer">原始 Issue ↗</a><a href="/blog/imported/cpuck-7.md" download>下载 Markdown ↓</a></div>
+<article><h1 dir="auto">Windows 11 修复华为 WCDMA USB 上网卡驱动记录</h1>
+<h2 dir="auto">设备信息</h2>
+<p dir="auto">设备：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="HUAWEI Mobile Connect - USB Device"><pre class="notranslate"><code class="notranslate">HUAWEI Mobile Connect - USB Device
+</code></pre></div>
+<p dir="auto">硬件 ID：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="USB\VID_12D1&amp;PID_1446"><pre class="notranslate"><code class="notranslate">USB\VID_12D1&amp;PID_1446
+</code></pre></div>
+<p dir="auto">驱动：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="ewusbdev.sys"><pre class="notranslate"><code class="notranslate">ewusbdev.sys
+</code></pre></div>
+<p dir="auto">驱动版本：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="1.0.0.7"><pre class="notranslate"><code class="notranslate">1.0.0.7
+</code></pre></div>
+<p dir="auto">驱动日期：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="2009/07/23"><pre class="notranslate"><code class="notranslate">2009/07/23
+</code></pre></div>
+<p dir="auto">设备类型：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="HUAWEI WCDMA 3G USB Modem"><pre class="notranslate"><code class="notranslate">HUAWEI WCDMA 3G USB Modem
+</code></pre></div>
+<hr>
+<h1 dir="auto">一、初始问题</h1>
+<p dir="auto">Windows 11 插入设备后提示：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="无法在此设备上加载驱动程序
+
+驱动程序:
+ewusbdev.sys
+
+安全设置将阻止加载此驱动程序"><pre class="notranslate"><code class="notranslate">无法在此设备上加载驱动程序
+
+驱动程序:
+ewusbdev.sys
+
+安全设置将阻止加载此驱动程序
+</code></pre></div>
+<p dir="auto">设备管理器：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="HUAWEI Mobile Connect - USB Device (COM5)"><pre class="notranslate"><code class="notranslate">HUAWEI Mobile Connect - USB Device (COM5)
+</code></pre></div>
+<p dir="auto">状态：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="代码 39
+
+Windows 无法加载这个硬件的设备驱动程序。
+驱动程序可能已损坏或不存在。"><pre class="notranslate"><code class="notranslate">代码 39
+
+Windows 无法加载这个硬件的设备驱动程序。
+驱动程序可能已损坏或不存在。
+</code></pre></div>
+<hr>
+<h1 dir="auto">二、确认驱动来源</h1>
+<p dir="auto">执行：</p>
+<div class="highlight highlight-source-batchfile notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="pnputil /enum-drivers | findstr /i /c:&quot;Huawei&quot; /c:&quot;ewusb&quot;"><pre class="notranslate"><span class="pl-k">pnputil</span> /enum-drivers <span class="pl-k">|</span> <span class="pl-k">findstr</span> /i /c:<span class="pl-s"><span class="pl-pds">"</span>Huawei<span class="pl-pds">"</span></span> /c:<span class="pl-s"><span class="pl-pds">"</span>ewusb<span class="pl-pds">"</span></span></pre></div>
+<p dir="auto">发现：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="原始名称: ewusbdev.inf
+提供程序名称: HUAWEI Incorporated
+驱动程序版本: 07/23/2009 1.0.0.7
+属性: Legacy"><pre class="notranslate"><code class="notranslate">原始名称: ewusbdev.inf
+提供程序名称: HUAWEI Incorporated
+驱动程序版本: 07/23/2009 1.0.0.7
+属性: Legacy
+</code></pre></div>
+<p dir="auto">完整驱动组件：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="ewusbdev.inf
+ewser2k.inf
+ewmdm2k.inf
+ewnet.inf
+ewdcsc.inf"><pre class="notranslate"><code class="notranslate">ewusbdev.inf
+ewser2k.inf
+ewmdm2k.inf
+ewnet.inf
+ewdcsc.inf
+</code></pre></div>
+<p dir="auto">功能：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>文件</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ewusbdev.inf</td>
+<td>USB/COM驱动</td>
+</tr>
+<tr>
+<td>ewser2k.inf</td>
+<td>串口驱动</td>
+</tr>
+<tr>
+<td>ewmdm2k.inf</td>
+<td>Modem驱动</td>
+</tr>
+<tr>
+<td>ewnet.inf</td>
+<td>网络驱动</td>
+</tr>
+<tr>
+<td>ewdcsc.inf</td>
+<td>SIM卡相关</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<h1 dir="auto">三、排查 Windows 安全阻止</h1>
+<h2 dir="auto">1. 检查内存完整性</h2>
+<p dir="auto">执行：</p>
+<div class="highlight highlight-source-batchfile notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="reg query HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity"><pre class="notranslate"><span class="pl-k">reg</span> <span class="pl-k">query</span> HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity</pre></div>
+<p dir="auto">结果：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Enabled REG_DWORD 0x0"><pre class="notranslate"><code class="notranslate">Enabled REG_DWORD 0x0
+</code></pre></div>
+<p dir="auto">说明：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="内存完整性已经关闭"><pre class="notranslate"><code class="notranslate">内存完整性已经关闭
+</code></pre></div>
+<hr>
+<h2 dir="auto">2. 检查驱动阻止列表</h2>
+<p dir="auto">执行：</p>
+<div class="highlight highlight-source-batchfile notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="reg query HKLM\SYSTEM\CurrentControlSet\Control\CI\Config /v VulnerableDriverBlocklistEnable"><pre class="notranslate"><span class="pl-k">reg</span> <span class="pl-k">query</span> HKLM\SYSTEM\CurrentControlSet\Control\CI\Config /v VulnerableDriverBlocklistEnable</pre></div>
+<p dir="auto">结果：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="VulnerableDriverBlocklistEnable REG_DWORD 0x1"><pre class="notranslate"><code class="notranslate">VulnerableDriverBlocklistEnable REG_DWORD 0x1
+</code></pre></div>
+<p dir="auto">说明：</p>
+<p dir="auto">Windows 11 仍通过易受攻击驱动阻止列表拦截老驱动。</p>
+<hr>
+<h1 dir="auto">四、关闭驱动阻止列表</h1>
+<p dir="auto">管理员 CMD：</p>
+<div class="highlight highlight-source-batchfile notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="reg add HKLM\SYSTEM\CurrentControlSet\Control\CI\Config /v VulnerableDriverBlocklistEnable /t REG_DWORD /d 0 /f"><pre class="notranslate"><span class="pl-k">reg</span> add HKLM\SYSTEM\CurrentControlSet\Control\CI\Config /v VulnerableDriverBlocklistEnable /t REG_DWORD /d <span class="pl-c1">0</span> /f</pre></div>
+<p dir="auto">结果：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="操作成功完成"><pre class="notranslate"><code class="notranslate">操作成功完成
+</code></pre></div>
+<p dir="auto">重启电脑。</p>
+<hr>
+<h1 dir="auto">五、驱动恢复成功</h1>
+<p dir="auto">重启后设备管理器出现：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="HUAWEI Mobile Connect - 3G Application Interface (COM7)
+
+HUAWEI Mobile Connect - 3G PC UI Interface (COM8)"><pre class="notranslate"><code class="notranslate">HUAWEI Mobile Connect - 3G Application Interface (COM7)
+
+HUAWEI Mobile Connect - 3G PC UI Interface (COM8)
+</code></pre></div>
+<p dir="auto">说明：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="USB驱动正常
+串口驱动正常
+华为模块正常启动"><pre class="notranslate"><code class="notranslate">USB驱动正常
+串口驱动正常
+华为模块正常启动
+</code></pre></div>
+<hr>
+<h1 dir="auto">六、进入华为模块调试</h1>
+<p dir="auto">工具：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="MobaXterm"><pre class="notranslate"><code class="notranslate">MobaXterm
+</code></pre></div>
+<p dir="auto">连接：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Serial
+
+COM8
+
+115200"><pre class="notranslate"><code class="notranslate">Serial
+
+COM8
+
+115200
+</code></pre></div>
+<p dir="auto">启动信息：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="^SIMST:255
+
+^BOOT:40995901,0,0,0,20
+
+^SRVST:4"><pre class="notranslate"><code class="notranslate">^SIMST:255
+
+^BOOT:40995901,0,0,0,20
+
+^SRVST:4
+</code></pre></div>
+<p dir="auto">说明：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="华为基带芯片已经启动"><pre class="notranslate"><code class="notranslate">华为基带芯片已经启动
+</code></pre></div>
+<hr>
+<h1 dir="auto">七、SIM卡问题排查</h1>
+<p dir="auto">联通客户端提示：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="无SIM卡或SIM卡错误"><pre class="notranslate"><code class="notranslate">无SIM卡或SIM卡错误
+</code></pre></div>
+<p dir="auto">更换SIM卡测试：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="仍无法识别"><pre class="notranslate"><code class="notranslate">仍无法识别
+</code></pre></div>
+<p dir="auto">判断：</p>
+<p dir="auto">不是 Windows 驱动问题。</p>
+<p dir="auto">可能原因：</p>
+<ol dir="auto">
+<li>SIM卡兼容问题</li>
+<li>SIM卡槽接触问题</li>
+<li>模块SIM读卡部分故障</li>
+<li>3G网络退网导致业务不可用</li>
+</ol>
+<hr>
+<h1 dir="auto">八、是否可以升级4G？</h1>
+<p dir="auto">结论：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="不能"><pre class="notranslate"><code class="notranslate">不能
+</code></pre></div>
+<p dir="auto">原因：</p>
+<p dir="auto">该设备硬件属于：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="WCDMA/HSPA 3G Modem"><pre class="notranslate"><code class="notranslate">WCDMA/HSPA 3G Modem
+</code></pre></div>
+<p dir="auto">硬件结构：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="USB接口
+ ↓
+3G基带芯片
+ ↓
+WCDMA射频
+ ↓
+天线"><pre class="notranslate"><code class="notranslate">USB接口
+ ↓
+3G基带芯片
+ ↓
+WCDMA射频
+ ↓
+天线
+</code></pre></div>
+<p dir="auto">4G LTE需要：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="LTE基带芯片
+ ↓
+LTE射频
+ ↓
+LTE频段支持"><pre class="notranslate"><code class="notranslate">LTE基带芯片
+ ↓
+LTE射频
+ ↓
+LTE频段支持
+</code></pre></div>
+<p dir="auto">驱动只能控制已有硬件。</p>
+<p dir="auto">不能增加：</p>
+<ul dir="auto">
+<li>LTE基带</li>
+<li>LTE射频</li>
+<li>4G频段支持</li>
+</ul>
+<p dir="auto">因此：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="修改驱动 ≠ 支持4G
+
+刷固件 ≠ 变4G"><pre class="notranslate"><code class="notranslate">修改驱动 ≠ 支持4G
+
+刷固件 ≠ 变4G
+</code></pre></div>
+<hr>
+<h1 dir="auto">九、最终结果</h1>
+<h2 dir="auto">已解决</h2>
+<p dir="auto">✅ Windows 11 驱动加载问题</p>
+<p dir="auto">✅ ewusbdev.sys 被阻止问题</p>
+<p dir="auto">✅ COM通信恢复</p>
+<p dir="auto">✅ 华为模块启动正常</p>
+<h2 dir="auto">未解决</h2>
+<p dir="auto">SIM无法识别。</p>
+<h2 dir="auto">最终判断</h2>
+<p dir="auto">设备：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="2009年前后的华为WCDMA 3G USB上网卡"><pre class="notranslate"><code class="notranslate">2009年前后的华为WCDMA 3G USB上网卡
+</code></pre></div>
+<p dir="auto">不是4G设备。</p>
+<hr>
+<h1 dir="auto">十、4G替代设备建议</h1>
+<p dir="auto">如果需要4G LTE：</p>
+<p dir="auto">推荐：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Huawei E3372
+
+Huawei E8372
+
+ZTE MF79U"><pre class="notranslate"><code class="notranslate">Huawei E3372
+
+Huawei E8372
+
+ZTE MF79U
+</code></pre></div>
+<p dir="auto">这些属于真正 LTE 硬件。</p>
+<hr>
+<h1 dir="auto">总结</h1>
+<p dir="auto">本次测试证明：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Windows 11
++
+2009 Huawei WCDMA USB Modem
++
+Legacy驱动
+
+仍然可以恢复运行"><pre class="notranslate"><code class="notranslate">Windows 11
++
+2009 Huawei WCDMA USB Modem
++
+Legacy驱动
+
+仍然可以恢复运行
+</code></pre></div>
+<p dir="auto">但是：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="3G硬件无法通过驱动升级成为4G"><pre class="notranslate"><code class="notranslate">3G硬件无法通过驱动升级成为4G
+</code></pre></div></article><footer class="article-footer"><a href="/?category=Article#explore">← 浏览更多笔记</a><span>KEEP LEARNING, KEEP EXPLORING.</span></footer>
+</main><aside class="toc-slot" aria-label="文章目录"></aside></div>
+<a class="back-top" href="#article-top" aria-label="返回顶部">↑</a><script>/* Shared by published articles, Markdown previews and chat messages. */
+window.DatxyCodeBlocks = {
+  enhance(root) {
+    root.querySelectorAll('pre').forEach((pre, index) => {
+      if (pre.closest('.code-frame')) return;
+      const code = pre.querySelector('code');
+      const raw = code ? code.textContent : pre.textContent;
+      const normalized = raw.replace(/\r\n?/g, '\n').replace(/\n$/, '');
+      const count = normalized ? normalized.split('\n').length : 0;
+      const classLanguage = (code?.className || pre.parentElement.className || '').match(/(?:language-|highlight-source-)([\w+-]+)/);
+      const language = pre.getAttribute('lang') || code?.getAttribute('lang') || classLanguage?.[1] || '代码';
+      const frame = document.createElement('div');
+      frame.className = 'code-frame';
+      const header = document.createElement(count > 10 ? 'summary' : 'div');
+      header.className = 'code-header';
+      const label = document.createElement('span');
+      label.className = 'code-label';
+      const detail = document.createElement('span');
+      detail.className = 'code-count';
+      label.textContent = language;
+      detail.textContent = `${count} 行`;
+      header.append(label, detail);
+      const copy = document.createElement('button');
+      copy.type = 'button'; copy.className = 'copy-code'; copy.textContent = '复制';
+      copy.setAttribute('aria-label', `复制 ${language} 代码，${count} 行`);
+      copy.setAttribute('aria-live', 'polite');
+      pre.before(frame);
+      let fold = null;
+      if (count > 10) {
+        fold = document.createElement('details');
+        fold.className = 'code-fold';
+        const action = document.createElement('span');
+        action.className = 'code-toggle-label';
+        const update = () => { action.textContent = fold.open ? '收起代码' : '展开代码'; };
+        update(); fold.addEventListener('toggle', update);
+        header.append(action); fold.append(header, pre); frame.append(fold, copy);
+      } else frame.append(header, pre, copy);
+      pre.tabIndex = 0;
+      pre.setAttribute('aria-label', `${language} 代码，可横向滚动`);
+      copy.addEventListener('click', async () => {
+        try {
+          if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+          await navigator.clipboard.writeText(raw);
+          copy.textContent = '已复制';
+        } catch {
+          if (fold) fold.open = true;
+          const range = document.createRange();
+          range.selectNodeContents(code || pre);
+          const selection = window.getSelection();
+          selection.removeAllRanges(); selection.addRange(range);
+          copy.textContent = '已选中';
+          copy.title = '请使用系统复制菜单或 Ctrl/Cmd+C';
+        }
+        setTimeout(() => { copy.textContent = '复制'; copy.removeAttribute('title'); }, 2200);
+      });
+    });
+  }
+};
+
+(() => {
+  const article = document.querySelector('article');
+  if (!article) return;
+  window.DatxyCodeBlocks.enhance(article);
+  const headings = [...article.querySelectorAll('h1,h2,h3,h4,h5,h6')];
+  const slot = document.querySelector('.toc-slot');
+  if (!headings.length) { slot?.remove(); return; }
+  const toc = document.createElement('details'); toc.className = 'article-toc';
+  const summary = document.createElement('summary'); summary.textContent = '本篇目录';
+  const nav = document.createElement('nav'); nav.setAttribute('aria-label', '文章目录');
+  const links = [];
+  const minLevel = Math.min(...headings.map(h => Number(h.tagName.slice(1))));
+  headings.forEach((heading, index) => {
+    if (!heading.id) {
+      let id = 'article-section-' + (index + 1);
+      while (document.getElementById(id)) id += '-';
+      heading.id = id;
+    }
+    const a = document.createElement('a');
+    a.href = '#' + encodeURIComponent(heading.id); a.textContent = heading.textContent.trim();
+    a.style.paddingLeft = (Number(heading.tagName.slice(1)) - minLevel) * 10 + 12 + 'px';
+    a.addEventListener('click', () => { if (matchMedia('(max-width: 1000px)').matches) toc.open = false; });
+    nav.append(a); links.push(a);
+  });
+  toc.append(summary, nav); slot.append(toc);
+  const media = matchMedia('(min-width: 1001px)');
+  toc.open = media.matches;
+  media.addEventListener('change', e => { toc.open = e.matches; });
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      const current = entries.find(e => e.isIntersecting);
+      if (!current) return;
+      links.forEach((a,i) => {
+        if (i === headings.indexOf(current.target)) a.setAttribute('aria-current','location');
+        else a.removeAttribute('aria-current');
+      });
+    }, {rootMargin:'0px 0px -65% 0px'});
+    headings.forEach(h => observer.observe(h));
+  }
+})();
+</script></body></html>
