@@ -21,7 +21,7 @@
     var cenx = 0.0;
     var ceny = 0.0;
     var cenz = 0.0;
-	
+
         var KERNEL = "float kernal(vec3 ver){\n" +
             "   vec3 a;\n" +
             "float b,c,d,e;\n" +

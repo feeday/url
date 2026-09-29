@@ -7,7 +7,7 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         body { background-color: #0d1117; color: #c9d1d9; font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; display: flex; flex-direction: column; height: 100vh; height: 100dvh; overflow: hidden; touch-action: manipulation; }
-        
+
         /* 顶部控制台 */
         .header { display: flex; flex-direction: column; background: #161b22; padding: 10px 14px; border-bottom: 1px solid #30363d; box-shadow: 0 4px 12px rgba(0,0,0,0.5); flex-shrink: 0; z-index: 100; }
         .header-row1 { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
@@ -20,7 +20,7 @@
         .val-display { min-width: 30px; font-family: monospace; font-size: 11px; color: #fff; text-align: right; }
         select { background-color: #0d1117; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 4px 6px; font-size: 11px; cursor: pointer; }
         button { padding: 6px 12px; font-weight: bold; border-radius: 6px; cursor: pointer; border: none; transition: 0.15s; font-size: 12px; white-space: nowrap; flex-shrink: 0; }
-        
+
         .btn-start { background-color: #238636; color: white; }
         .btn-start.active { background-color: #da3633; }
         .btn-pause { background-color: #1f6feb; color: white; }
@@ -28,9 +28,9 @@
         .btn-rec { background-color: #6e40c9; color: white; }
         .btn-rec.active { background-color: #f85149; animation: pulse 1s infinite; }
         .btn-save { background-color: #388bfd; color: white; }
-        
+
         @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
-        
+
         /* 数值监控面板 */
         .monitor-bar { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 14px; background: #0d1117; border-bottom: 1px solid #21262d; flex-shrink: 0; font-family: monospace; font-size: 11px; }
         .monitor-item { display: flex; align-items: center; gap: 4px; background: #161b22; padding: 3px 8px; border-radius: 4px; border: 1px solid #21262d; }
@@ -38,7 +38,7 @@
         .monitor-val { color: #7ee787; min-width: 50px; text-align: right; }
         .monitor-val.warn { color: #d29922; }
         .monitor-val.clip { color: #f85149; }
-        
+
         /* 5宫格自适应布局 */
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); grid-auto-rows: minmax(160px, 1fr); gap: 8px; flex: 1; overflow-y: auto; padding: 8px; -webkit-overflow-scrolling: touch; }
         .panel { background: #000; border: 1px solid #333; border-radius: 6px; position: relative; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 2px 8px rgba(0,0,0,0.3); min-height: 150px; }
@@ -46,26 +46,26 @@
         .panel-save-btn { position: absolute; top: 6px; right: 8px; z-index: 10; background: rgba(56,139,253,0.8); color: #fff; border: none; border-radius: 4px; padding: 2px 8px; font-size: 10px; cursor: pointer; opacity: 0.6; transition: opacity 0.2s; }
         .panel-save-btn:hover { opacity: 1; }
         canvas { display: block; width: 100%; height: 100%; }
-        
+
         /* 独立面板样式 */
         #panel-ecg { background-color: #ffe8e8; }
-        
+
         /* 交互反馈层 */
         .cursor-info { position: absolute; bottom: 6px; right: 8px; font-size: 10px; font-family: monospace; color: #fff; background: rgba(0,0,0,0.75); padding: 3px 7px; border-radius: 4px; z-index: 10; pointer-events: none; display: none; }
         .pause-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); display: none; justify-content: center; align-items: center; z-index: 5; pointer-events: none; }
         .pause-overlay.visible { display: flex; }
         .pause-overlay span { color: #d29922; font-size: 14px; font-weight: bold; background: rgba(0,0,0,0.7); padding: 4px 12px; border-radius: 4px; }
-        
+
         /* 录音指示器 */
         .rec-indicator { display: none; align-items: center; gap: 4px; color: #f85149; font-size: 11px; font-weight: bold; }
         .rec-indicator.visible { display: flex; }
         .rec-dot { width: 8px; height: 8px; background: #f85149; border-radius: 50%; animation: pulse 1s infinite; }
-        
+
         /* 滚动条美化 */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0d1117; }
         ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
-        
+
         /* 移动端与多尺寸适配 */
         @media (max-width: 600px) {
             .header { padding: 8px 10px; }
@@ -91,7 +91,7 @@
                 grid-template-columns: repeat(3, 1fr);
                 grid-template-rows: 1fr 1fr;
             }
-            
+
             /* 让图3 (纵向瀑布) 固定在第3列，并垂直跨越 2 行 */
             #panel-vert {
                 grid-column: 3;
@@ -223,7 +223,7 @@
     const pauseBtn = document.getElementById('pauseBtn');
     const recBtn = document.getElementById('recBtn');
     const saveAllBtn = document.getElementById('saveAllBtn');
-    
+
     const gainSlider = document.getElementById('gainSlider');
     const gainValueTxt = document.getElementById('gainValue');
     const fftSelect = document.getElementById('fftSelect');
@@ -236,7 +236,7 @@
     const dbMinValueTxt = document.getElementById('dbMinValue');
     const dbMaxSlider = document.getElementById('dbMaxSlider');
     const dbMaxValueTxt = document.getElementById('dbMaxValue');
-    
+
     const recIndicator = document.getElementById('recIndicator');
 
     const monRMS = document.getElementById('monRMS');
@@ -260,7 +260,7 @@
     // ==================== 核心状态管理 ====================
     let audioCtx, analyser, sourceNode, mediaStream;
     let dataTime, dataFreqByte, dataFreqFloat, smoothRTA;
-    
+
     let isRunning = false;
     let isPaused = false;
     let animationId = null;
@@ -330,17 +330,17 @@
             analyser = audioCtx.createAnalyser();
             analyser.fftSize = parseInt(fftSelect.value);
             analyser.smoothingTimeConstant = parseFloat(smoothSlider.value);
-            
+
             sourceNode = audioCtx.createMediaStreamSource(mediaStream);
             sourceNode.connect(analyser);
-            
+
             monSR.textContent = audioCtx.sampleRate + ' Hz';
             reallocBuffers();
             resizeCanvases();
-            
+
             isRunning = true;
             isPaused = false;
-            
+
             // 更新 UI
             startBtn.textContent = '停止系统';
             startBtn.classList.add('active');
@@ -348,10 +348,10 @@
             recBtn.disabled = false;
             saveAllBtn.disabled = false;
             document.querySelectorAll('.pause-overlay').forEach(el => el.classList.remove('visible'));
-            
+
             renderLoop();
-        } catch (err) { 
-            alert('麦克风权限调用失败，请确保在 localhost 或 HTTPS 环境下运行，并授予浏览器麦克风权限。详情: ' + err.message); 
+        } catch (err) {
+            alert('麦克风权限调用失败，请确保在 localhost 或 HTTPS 环境下运行，并授予浏览器麦克风权限。详情: ' + err.message);
         }
     }
 
@@ -361,7 +361,7 @@
         if (mediaStream) mediaStream.getTracks().forEach(t => t.stop());
         if (audioCtx) audioCtx.close();
         if (mediaRecorder && mediaRecorder.state === 'recording') mediaRecorder.stop();
-        
+
         startBtn.textContent = '开启监听';
         startBtn.classList.remove('active');
         pauseBtn.disabled = true;
@@ -584,11 +584,11 @@
         let rmsDb = rms > 0.0001 ? 20 * Math.log10(rms) : -120;
         let peak = Math.sqrt(peakSq);
         let peakDb = peak > 0.0001 ? 20 * Math.log10(peak) : -120;
-        
+
         monRMS.textContent = rmsDb.toFixed(1);
         monPeak.textContent = peakDb.toFixed(1);
         monCrest.textContent = (peakDb - rmsDb).toFixed(1);
-        
+
         monPeak.className = 'monitor-val' + (peakDb > -1 ? ' clip' : (peakDb > -6 ? ' warn' : ''));
 
         let maxVal = -999, maxBin = 0;
@@ -601,7 +601,7 @@
     function renderLoop() {
         if (!isRunning) return;
         animationId = requestAnimationFrame(renderLoop);
-        
+
         if (isPaused) return; // 暂停不更新数据和画面
 
         analyser.getByteTimeDomainData(dataTime);
@@ -614,7 +614,7 @@
         renderRTA();
         renderVertSpectrogram();
         renderSimpleSpectrum();
-        
+
         const colorFunc = themeFuncs[themeSelect.value];
         renderHorizSpectrogram(colorFunc);
     }
@@ -628,18 +628,18 @@
         for(let y=0; y<h; y+=20) { ctxECG.moveTo(0,y); ctxECG.lineTo(w,y); }
         ctxECG.stroke();
     }
-    
+
     function renderECG() {
         const w = ctxECG.canvas.width; const h = ctxECG.canvas.height;
         const speed = ecgSpeed * (window.devicePixelRatio || 1);
-        
-        let rawVal = dataTime[Math.floor(dataTime.length / 2)]; 
+
+        let rawVal = dataTime[Math.floor(dataTime.length / 2)];
         let mappedVal = ((rawVal - 128) * globalGain) + 128;
         let y = (mappedVal / 255) * h;
-        y = Math.max(0, Math.min(h, y)); 
+        y = Math.max(0, Math.min(h, y));
 
         if (ecgX >= w) ecgX = 0;
-        
+
         // 局部擦除并重绘网格
         ctxECG.fillStyle = '#ffe8e8'; ctxECG.fillRect(ecgX, 0, speed + 10, h);
         ctxECG.lineWidth = 1; ctxECG.strokeStyle = '#ffcccc'; ctxECG.beginPath();
@@ -655,9 +655,9 @@
     function renderRTA() {
         const w = ctxRTA.canvas.width; const h = ctxRTA.canvas.height;
         const freqRes = audioCtx.sampleRate / analyser.fftSize;
-        
+
         ctxRTA.fillStyle = '#0a0a0a'; ctxRTA.fillRect(0, 0, w, h);
-        
+
         drawFreqAxisLog(ctxRTA, w, h);
         drawDbAxisRTA(ctxRTA, w, h);
 
@@ -667,7 +667,7 @@
         for(let i=0; i<dataFreqFloat.length; i++) {
             let f = i * freqRes; if(f<MIN_FREQ || f>MAX_FREQ) continue;
             smoothRTA[i] = smoothRTA[i] * 0.9 + dataFreqFloat[i] * 0.1;
-            let x = getLogX(f, w); 
+            let x = getLogX(f, w);
             let y = (-(smoothRTA[i] - userMaxDB) / (userMaxDB - userMinDB)) * h;
             if (isFirstR) { ctxRTA.moveTo(x,y); isFirstR = false; } else ctxRTA.lineTo(x,y);
         }
@@ -678,7 +678,7 @@
         let isFirstY = true;
         for(let i=0; i<dataFreqFloat.length; i++) {
             let f = i * freqRes; if(f<MIN_FREQ || f>MAX_FREQ) continue;
-            let x = getLogX(f, w); 
+            let x = getLogX(f, w);
             let y = (-(dataFreqFloat[i] - userMaxDB) / (userMaxDB - userMinDB)) * h;
             if (isFirstY) { ctxRTA.moveTo(x,y); isFirstY = false; } else ctxRTA.lineTo(x,y);
         }
@@ -690,7 +690,7 @@
         const w = ctxVertRTA.canvas.width; const h = ctxVertRTA.canvas.height;
         const freqRes = audioCtx.sampleRate / analyser.fftSize;
         const scrollSpeed = 2;
-        
+
         // 画面下移
         const img = ctxVertRTA.getImageData(0, 0, w, h - scrollSpeed);
         ctxVertRTA.putImageData(img, 0, scrollSpeed);
@@ -709,11 +709,11 @@
     function renderSimpleSpectrum() {
         const w = ctxSimpleSpec.canvas.width; const h = ctxSimpleSpec.canvas.height;
         ctxSimpleSpec.fillStyle = '#11151a'; ctxSimpleSpec.fillRect(0, 0, w, h);
-        
+
         const maxDisplay = Math.floor(dataFreqByte.length * 0.75);
-        const barW = (w / maxDisplay); 
+        const barW = (w / maxDisplay);
         let x = 0;
-        
+
         ctxSimpleSpec.beginPath(); ctxSimpleSpec.moveTo(0, h);
         for(let i=0; i<maxDisplay; i++) {
             let val = Math.min(255, dataFreqByte[i] * globalGain);
@@ -729,14 +729,14 @@
     function renderHorizSpectrogram(colorFunc) {
         const w = ctxHorizBase.canvas.width; const h = ctxHorizBase.canvas.height;
         const scrollSpeed = 2;
-        
+
         // 画面左移
         const img = ctxHorizBase.getImageData(scrollSpeed, 0, w - scrollSpeed, h);
-        ctxHorizBase.putImageData(img, 0, 0); 
-        
+        ctxHorizBase.putImageData(img, 0, 0);
+
         const maxBins = Math.floor(dataFreqByte.length * 0.7);
         const binH = h / maxBins;
-        
+
         // 绘制右边缘
         for(let i=0; i<maxBins; i++) {
             let y = h - (i * binH);
