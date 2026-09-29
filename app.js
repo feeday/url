@@ -1,0 +1,28 @@
+const categories = [
+  {id:'all',name:'全部资源',icon:'✳'},
+  {id:'Dataset',name:'Dataset',icon:'▦'},
+  {id:'Model',name:'Model',icon:'◈'},
+  {id:'GPU',name:'GPU',icon:'▥'},
+  {id:'CPU',name:'CPU',icon:'◇'},
+  {id:'Website',name:'Website',icon:'◎'},
+  {id:'URL',name:'URL',icon:'↗'}
+];
+const $ = selector => document.querySelector(selector);
+const state = {category:new URLSearchParams(location.search).get('category') || 'all', query:'', alphabetical:false, entries:[]};
+if (!categories.some(c => c.id === state.category)) state.category = 'all';
+const special = {
+  Dataset:new Set(['魔搭数据集','Kaggle','银河系全景图']),
+  Model:new Set(['Leaderboard','GPT-Image 2','Claude','Gemini','Replicate','fal.ai','Z-Image-Turbo','FireRed-Image-Edit','FLUX.2-klein-9B','Qwen-Image-Edit','bonsai-image-webgpu','VoxCPM2','SoulX-Singer','IndexTTS-2','VibeVoice','Whisper','LTX-2.3','Wan2.2','LLM 本地测试']),
+  GPU:new Set(['GPU Test','Cloud Studio','Colab']),
+  URL:new Set(['Ping','IP-Addrs','Internet Speed Test','BBN Speed Test','Wormhole','船舶定位','航班定位','AI-信息'])
+};
+function categoryFor(item){return Object.keys(special).find(key => special[key].has(item.title)) || 'Website'}
+function safeUrl(value){try{const u=new URL(value);return ['https:','http:'].includes(u.protocol)?u.href:null}catch{return null}}
+function normalizeLegacy(item,index){const url=safeUrl(item.url || item.links?.http || item.links?.hf || item.links?.hfCn);if(!url)return null;return {category:categoryFor(item),title:String(item.title||''),desc:String(item.desc||''),url,featured:!!item.isTop,kind:item.cat,index:index+100}}
+function uniqueEntries(items){const seen=new Set();return items.filter(item=>{const url=safeUrl(item.url);if(!url)return false;const key=new URL(url).hostname.toLowerCase()+new URL(url).pathname.replace(/\/$/,'').toLowerCase();if(seen.has(key))return false;seen.add(key);item.url=url;return true})}
+function textNode(tag,className,value){const el=document.createElement(tag);if(className)el.className=className;el.textContent=value;return el}
+function renderNav(){const nav=$('#category-nav');nav.replaceChildren();categories.forEach(cat=>{const button=document.createElement('button');button.type='button';button.className='category-button'+(state.category===cat.id?' active':'');button.setAttribute('aria-current',state.category===cat.id?'true':'false');button.append(textNode('span','category-icon',cat.icon),textNode('span','',cat.name),textNode('span','category-count',String(cat.id==='all'?state.entries.length:state.entries.filter(e=>e.category===cat.id).length).padStart(2,'0')));button.addEventListener('click',()=>{state.category=cat.id;history.replaceState(null,'',cat.id==='all'?location.pathname:location.pathname+'?category='+encodeURIComponent(cat.id));render();});nav.append(button)})}
+function makeCard(item){const card=document.createElement('a');card.className='card';card.href=item.url;card.target='_blank';card.rel='noopener noreferrer';card.setAttribute('aria-label',item.title+'，在新标签页打开');const top=textNode('div','card-top','');top.append(textNode('span','card-symbol',categories.find(c=>c.id===item.category)?.icon||'↗'),textNode('span','card-open','↗'));let domain='';try{domain=new URL(item.url).hostname.replace(/^www\./,'')}catch{}const meta=textNode('div','card-meta','');meta.append(textNode('span','card-kind',item.category.toUpperCase()),textNode('span','separator','/'),textNode('span','domain',domain));card.append(top,textNode('h3','',item.title),textNode('p','',item.desc||'访问资源网站'),meta);return card}
+function render(){renderNav();const cat=categories.find(c=>c.id===state.category)||categories[0];const query=state.query.trim().toLocaleLowerCase();let entries=state.entries.filter(item=>(state.category==='all'||item.category===state.category)&&(!query||[item.title,item.desc,item.category,item.url].some(v=>v.toLocaleLowerCase().includes(query))));entries.sort((a,b)=>state.alphabetical?a.title.localeCompare(b.title,'zh-CN')-b.title.localeCompare(a.title,'zh-CN'):(Number(b.featured)-Number(a.featured)||a.index-b.index));$('#current-index').textContent=String(categories.indexOf(cat)).padStart(2,'0');$('#current-category').textContent=cat.name;$('#result-count').textContent=entries.length+' LINKS';$('#empty').hidden=entries.length>0;$('#cards').replaceChildren(...entries.map(makeCard));$('#sort-button').textContent=state.alphabetical?'名称排序 ↑':'精选优先 ↓'}
+async function init(){try{const [curatedResponse,legacyResponse]=await Promise.all([fetch('curated.json'),fetch('list.json')]);if(!curatedResponse.ok||!legacyResponse.ok)throw new Error('资源列表加载失败');const [curated,legacy]=await Promise.all([curatedResponse.json(),legacyResponse.json()]);state.entries=uniqueEntries([...curated.map((v,index)=>({...v,index})),...legacy.map(normalizeLegacy).filter(Boolean)]);render()}catch(error){$('#empty').hidden=false;$('#empty h3').textContent='资源列表暂时无法加载';$('#empty p').textContent='请刷新页面重试。';$('#reset-button').hidden=true;console.error(error)}}
+$('#search').addEventListener('input',event=>{state.query=event.target.value;render()});$('#sort-button').addEventListener('click',()=>{state.alphabetical=!state.alphabetical;render()});$('#reset-button').addEventListener('click',()=>{state.query='';state.category='all';$('#search').value='';history.replaceState(null,'',location.pathname);render()});document.addEventListener('keydown',event=>{if(event.key==='/'&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){event.preventDefault();$('#search').focus()}if(event.key==='Escape'&&document.activeElement===$('#search')){$('#search').blur()}});$('#year').textContent=new Date().getFullYear();init();
